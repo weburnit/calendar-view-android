@@ -11,23 +11,26 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.DragEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.thucphan.calendar.ResizableCalendarView;
-import com.thucphan.calendar.manager.CalendarManager;
+import com.weburnit.calendar.ResizableCalendarView;
+import com.weburnit.calendar.manager.CalendarManager;
 
 import org.joda.time.LocalDate;
 
-public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private AppBarLayout mAppBarLayout;
     private ResizableCalendarView mCalendarView;
     private RecyclerView mRecyclerView;
 
 
     private boolean isExpanded = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +51,19 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
         navigationView.setNavigationItemSelectedListener(this);
 
         mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
+        mAppBarLayout.setExpanded(true, true);
         mCalendarView = (ResizableCalendarView) findViewById(R.id.calendar_view);
 
-        CalendarManager manager = new CalendarManager(LocalDate.now(), LocalDate.now(), LocalDate.now().plusYears(1));
+        mCalendarView.setListener(new ResizableCalendarView.OnDateSelect() {
+            @Override
+            public void onDateSelected(LocalDate date) {
+                mCalendarView.selectDate(date);
+            }
+        });
+
+        CalendarManager manager = new CalendarManager(LocalDate.now(), 2);
         mCalendarView.init(manager);
+//        mCalendarView.next();
 
 
         final ImageView arrow = (ImageView) findViewById(R.id.date_picker_arrow);
@@ -63,11 +75,11 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
             public void onClick(View v) {
                 if (isExpanded) {
                     ViewCompat.animate(arrow).rotation(0).start();
-                    mAppBarLayout.setExpanded(false, true);
+//                    mAppBarLayout.setExpanded(false, true);
                     isExpanded = false;
                 } else {
                     ViewCompat.animate(arrow).rotation(180).start();
-                    mAppBarLayout.setExpanded(true, true);
+//                    mAppBarLayout.setExpanded(true, true);
                     isExpanded = true;
                 }
             }

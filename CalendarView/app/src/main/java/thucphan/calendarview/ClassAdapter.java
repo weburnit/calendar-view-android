@@ -27,7 +27,6 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
     }
 
     @Override

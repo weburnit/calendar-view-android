@@ -37,7 +37,7 @@ public class CalendarManagerTest {
     @Test
     public void testGetWeeks() {
         CalendarManager manager = new CalendarManager(LocalDate.now(), 2);
-        assertEquals(4, manager.getWeeks().size());
+        assertEquals(5, manager.getWeeks().size());
     }
 
     @Test
@@ -356,8 +356,8 @@ public class CalendarManagerTest {
         mCalendarManager.init(now, min, max);
 
         assertEquals(now, mCalendarManager.getSelectedDay());
-        assertEquals(min, mCalendarManager.getMinDate());
-        assertEquals(max, mCalendarManager.getMaxDate());
+        assertEquals(min.withDayOfWeek(1), mCalendarManager.getMinDate());
+        assertEquals(max.withDayOfWeek(7), mCalendarManager.getMaxDate());
         assertEquals(now.withDayOfMonth(1), mCalendarManager.getActiveMonth());
 
         CalendarUnit unit = new Month(now, now, min, max);

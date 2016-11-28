@@ -58,104 +58,14 @@
 
     </FrameLayout>
 
-    <LinearLayout
-        android:id="@+id/days"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/text_normal"
-            android:textSize="10sp"
-            tools:ignore="SmallSp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/text_normal"
-            android:textSize="10sp"
-            tools:ignore="SmallSp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/text_normal"
-            android:textSize="10sp"
-            tools:ignore="SmallSp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/text_normal"
-            android:textSize="10sp"
-            tools:ignore="SmallSp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/text_normal"
-            android:textSize="10sp"
-            tools:ignore="SmallSp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/text_super_light"
-            android:textSize="10sp"
-            tools:ignore="SmallSp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textAllCaps="true"
-            android:textColor="@color/text_super_light"
-            android:textSize="10sp"
-            tools:ignore="SmallSp" />
-
-    </LinearLayout>
-
-    <LinearLayout
+    <com.weburnit.calendar.widget.WeekBar
         android:id="@+id/weeks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Cashes them at first start -->
-        <include layout="@layout/week_layout" />
-
-        <include layout="@layout/week_layout" />
-
-        <include layout="@layout/week_layout" />
-
-        <include layout="@layout/week_layout" />
-
-        <include layout="@layout/week_layout" />
-
-        <include layout="@layout/week_layout" />
-
-    </LinearLayout>
+    </com.weburnit.calendar.widget.WeekBar>
 
     <LinearLayout
         android:id="@+id/indicators"

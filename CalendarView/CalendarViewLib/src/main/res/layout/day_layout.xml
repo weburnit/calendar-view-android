@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<com.thucphan.calendar.widget.DayView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<com.weburnit.calendar.widget.DayView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/days"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_btn_calendar_square"
-    android:gravity="center"
-    android:paddingBottom="3dp"
-    android:paddingTop="3dp"
-    android:textColor="@color/text_calendar"
-    android:textSize="14sp" />
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_centerHorizontal="true">
+
+    <TextView
+        android:id="@+id/week_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        tools:ignore="SmallSp" />
+
+    <TextView
+        android:id="@+id/week_day"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bg_btn_calendar_square"
+        android:layout_gravity="center"
+        android:paddingTop="2dp"
+        android:paddingBottom="2dp"
+        android:textAlignment="center"
+        android:textColor="@color/blue_dark"
+        android:textStyle="bold"
+        android:textSize="14sp" />
+</com.weburnit.calendar.widget.DayView>

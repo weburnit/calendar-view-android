@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.thucphan.calendar">
+    package="com.weburnit.calendar">
 
     <application android:allowBackup="true" />
 

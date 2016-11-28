@@ -34,7 +34,7 @@
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="1.0">
 
-                <com.thucphan.calendar.ResizableCalendarView
+                <com.weburnit.calendar.ResizableCalendarView
                     android:id="@+id/calendar_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

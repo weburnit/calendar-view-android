@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
-    android:padding="3dp">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:paddingBottom="4dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/time"
@@ -18,7 +21,9 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:text="9:00 AM - 9: 45 AM"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textSize="10dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/price"
@@ -28,7 +33,18 @@
             android:layout_alignParentTop="true"
             android:text="$ 15"
             android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="2dp"
+            android:text="Address"
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/name"
@@ -36,36 +52,42 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/time"
             android:text="Fire Yoga"
-            android:textColor="@color/colorPrimary"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/avatar"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:id="@+id/photo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_below="@+id/name"
+            android:layout_marginTop="10dp"
             android:src="@drawable/avatar_droid" />
 
         <TextView
-            android:id="@+id/teacher_name"
+            android:id="@+id/subject"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="15dp"
-            android:layout_toRightOf="@+id/avatar"
+            android:layout_toRightOf="@+id/photo"
             android:text="Julia Johnson" />
 
         <TextView
-            android:id="@+id/recommend"
+            android:id="@+id/information"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/teacher_name"
-            android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@+id/avatar"
+            android:layout_below="@+id/subject"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@+id/photo"
             android:text="100% Recommended"
             android:textSize="10sp" />
     </RelativeLayout>
 
-</android.support.v7.widget.CardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/dim_foreground_disabled_material_dark" />
+</LinearLayout>

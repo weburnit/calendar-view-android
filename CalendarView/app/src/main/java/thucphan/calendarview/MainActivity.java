@@ -20,8 +20,13 @@ import android.widget.RelativeLayout;
 
 import com.weburnit.calendar.ResizableCalendarView;
 import com.weburnit.calendar.manager.CalendarManager;
+import com.weburnit.calendar.widget.CalendarAdapter;
+import com.weburnit.calendar.widget.CalendarItem;
 
 import org.joda.time.LocalDate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private AppBarLayout mAppBarLayout;
@@ -54,15 +59,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mAppBarLayout.setExpanded(true, true);
         mCalendarView = (ResizableCalendarView) findViewById(R.id.calendar_view);
 
-        mCalendarView.setListener(new ResizableCalendarView.OnDateSelect() {
+        List<CalendarItem> data = new ArrayList<CalendarItem>();
+        data.add(new CalendarItem() {
             @Override
-            public void onDateSelected(LocalDate date) {
-                mCalendarView.selectDate(date);
+            public String getPrice() {
+                return "12$";
+            }
+
+            @Override
+            public String getInformation() {
+                return "Something";
+            }
+
+            @Override
+            public String getSubject() {
+                return "My subject";
+            }
+
+            @Override
+            public String getPhoto() {
+                return "https://d13yacurqjgara.cloudfront.net/users/62525/screenshots/2457251/fitness_calendar.png";
+            }
+
+            @Override
+            public String getName() {
+                return "Paul Item";
             }
         });
 
-        CalendarManager manager = new CalendarManager(LocalDate.now(), 2);
-        mCalendarView.init(manager);
+        mCalendarView.setListener(new ResizableCalendarView.OnDateSelect() {
+            @Override
+            public void onDateSelected(LocalDate date, CalendarAdapter adapter) {
+                mCalendarView.selectDate(date);
+
+//                adapter.addData(data);
+            }
+        });
+
 //        mCalendarView.next();
 
 
@@ -75,18 +108,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 if (isExpanded) {
                     ViewCompat.animate(arrow).rotation(0).start();
-//                    mAppBarLayout.setExpanded(false, true);
                     isExpanded = false;
                 } else {
                     ViewCompat.animate(arrow).rotation(180).start();
-//                    mAppBarLayout.setExpanded(true, true);
                     isExpanded = true;
                 }
             }
         });
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_main);
+        CalendarManager manager = new CalendarManager(LocalDate.now(), 2);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(new ClassAdapter());
+        mCalendarView.init(manager, mRecyclerView);
+//        mRecyclerView.setAdapter(new ClassAdapter());
     }
 
     @Override

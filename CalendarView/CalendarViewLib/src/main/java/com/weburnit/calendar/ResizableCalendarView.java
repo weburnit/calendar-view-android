@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.weburnit.calendar.manager.CalendarManager;
 import com.weburnit.calendar.manager.Month;
 import com.weburnit.calendar.manager.Week;
+import com.weburnit.calendar.widget.CalendarAdapter;
+import com.weburnit.calendar.widget.CalendarItem;
 import com.weburnit.calendar.widget.IndicatorView;
 import com.weburnit.calendar.widget.WeekBar;
 import com.weburnit.calendar.widget.WeekView;
@@ -58,6 +60,8 @@ public class ResizableCalendarView extends LinearLayout implements View.OnClickL
     @NonNull
     private LinearLayout mHeader;
 
+    private RecyclerView calendarTable;
+
     /*Temporary close Resize for show only Week
      */
 //    @NonNull private ResizeManager mResizeManager;
@@ -74,24 +78,22 @@ public class ResizableCalendarView extends LinearLayout implements View.OnClickL
 
     public ResizableCalendarView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-
         mInflater = LayoutInflater.from(context);
-
-//        mResizeManager = new ResizeManager(this);
 
         inflate(context, R.layout.calendar_layout, this);
 
         setOrientation(VERTICAL);
     }
 
-    public void init(@NonNull CalendarManager manager) {
+    public void init(@NonNull CalendarManager manager, RecyclerView table) {
+        this.setCalendarTable(table);
         if (manager != null) {
             mManager = manager;
             mIndicatorView = (LinearLayout) findViewById(R.id.indicators);
             mWeeksView.initBy(mManager, (IndicatorView) mIndicatorView.getChildAt(0));
             populateLayout();
             if (mListener != null) {
-                mListener.onDateSelected(mManager.getSelectedDay());
+                this.selectDate(mManager.getSelectedDay());
             }
         }
     }
@@ -169,17 +171,18 @@ public class ResizableCalendarView extends LinearLayout implements View.OnClickL
         mWeeksView.setListener(new WeekBar.WeekBarListener() {
             @Override
             public void onStopped(LocalDate date) {
-
+                mListener.onDateSelected(date, (CalendarAdapter) calendarTable.getAdapter());
             }
         });
 
         mHeader = (LinearLayout) findViewById(R.id.header);
         mSelectionText = (TextView) findViewById(R.id.selection_title);
-
-//        mPrev.setOnClickListener(this);
-//        mNext.setOnClickListener(this);
-
         populateLayout();
+    }
+
+    private void setCalendarTable(RecyclerView table) {
+        this.calendarTable = table;
+        calendarTable.setAdapter(new CalendarAdapter());
     }
 
     public void populateLayout() {
@@ -270,7 +273,7 @@ public class ResizableCalendarView extends LinearLayout implements View.OnClickL
     }
 
     public interface OnDateSelect {
-        public void onDateSelected(LocalDate date);
+        public void onDateSelected(LocalDate date, CalendarAdapter adapter);
     }
 
 }

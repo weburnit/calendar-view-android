@@ -110,6 +110,7 @@ public class WeekBar extends RecyclerView {
             int hideItems = currentPosition / unitPositionInterval;
             int dayIndex = hideItems + indicatorInterface.getCurrentPosition();
             indicatorInterface.onScreenItem(manager.getMinDate().plusDays(dayIndex), indicatorInterface.getCurrentPosition(), false);
+            this.listener.onStopped(manager.getMinDate().plusDays(dayIndex));
         }
     }
 

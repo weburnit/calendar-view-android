@@ -81,11 +81,12 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.CellHolder> {
     }
 
     public void setCurrentDayView(DayView dayView) {
-        if (currentWeekDay != null)
+        if (currentWeekDay != null) {
             currentWeekDay.setSelected(false);
-        final TextView weekDay = (TextView) dayView.findViewById(R.id.week_day);
-        currentWeekDay = weekDay;
-        weekDay.setSelected(true);
+            final TextView weekDay = (TextView) dayView.findViewById(R.id.week_day);
+            currentWeekDay = weekDay;
+            weekDay.setSelected(true);
+        }
     }
 
     private Week getWeek(int position) {

@@ -14,29 +14,41 @@ public class ResizeManager {
 
     private static final String TAG = "ResizeManager";
 
-    /** View to resize */
-    @NonNull private ResizableCalendarView mCalendarView;
+    /**
+     * View to resize
+     */
+    @NonNull
+    private ResizableCalendarView mCalendarView;
 
-    /** Distance in px until drag has started */
+    /**
+     * Distance in px until drag has started
+     */
     private final int mTouchSlop;
 
     private final int mMinFlingVelocity;
 
     private final int mMaxFlingVelocity;
 
-    /** Y position on {@link android.view.MotionEvent#ACTION_DOWN} */
+    /**
+     * Y position on {@link android.view.MotionEvent#ACTION_DOWN}
+     */
     private float mDownY;
 
-    /** Y position when resizing started */
+    /**
+     * Y position when resizing started
+     */
     private float mDragStartY;
 
-    /** If calendar is currently resizing. */
+    /**
+     * If calendar is currently resizing.
+     */
     private State mState = State.IDLE;
 
     private VelocityTracker mVelocityTracker;
     private final Scroller mScroller;
 
-    @Nullable private ProgressManager mProgressManager;
+    @Nullable
+    private ProgressManager mProgressManager;
 
     public ResizeManager(@NonNull ResizableCalendarView calendarView) {
 
@@ -99,6 +111,7 @@ public class ResizeManager {
 
     /**
      * Triggered
+     *
      * @param event Down event
      */
     private boolean onDownEvent(@NonNull MotionEvent event) {

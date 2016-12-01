@@ -16,7 +16,6 @@ import com.weburnit.calendar.manager.CalendarManager;
 import com.weburnit.calendar.manager.Month;
 import com.weburnit.calendar.manager.Week;
 import com.weburnit.calendar.widget.CalendarAdapter;
-import com.weburnit.calendar.widget.CalendarItem;
 import com.weburnit.calendar.widget.IndicatorView;
 import com.weburnit.calendar.widget.WeekBar;
 import com.weburnit.calendar.widget.WeekView;
@@ -279,6 +278,7 @@ public class ResizableCalendarView extends LinearLayout implements View.OnClickL
 
     public interface OnDateSelect {
         public void onDateSelected(LocalDate date, CalendarAdapter adapter);
+
         public void onDateScroll(LocalDate date);
     }
 

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 public class WeekView extends ViewGroup {
 
-    private  final String TAG =  getClass().getSimpleName();
+    private final String TAG = getClass().getSimpleName();
 
     public WeekView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -23,11 +23,11 @@ public class WeekView extends ViewGroup {
         int baseSize = 0;
 
         int cnt = getChildCount();
-        for(int i = 0; i < cnt; i++) {
+        for (int i = 0; i < cnt; i++) {
 
             View child = getChildAt(i);
 
-            if(child.getVisibility() == View.GONE) {
+            if (child.getVisibility() == View.GONE) {
                 continue;
             }
 
@@ -56,7 +56,7 @@ public class WeekView extends ViewGroup {
         }
         int height = getLayoutParams().height;
         int heightWithPadding = baseSize + getPaddingBottom() + getPaddingTop();
-        Log.d(TAG, "onMeasure ====== " + " baseSize: " + baseSize +" widthSize: " +widthSize + " height: " +  height+ " heightWithPadding: " + heightWithPadding);
+        Log.d(TAG, "onMeasure ====== " + " baseSize: " + baseSize + " widthSize: " + widthSize + " height: " + height + " heightWithPadding: " + heightWithPadding);
         setMeasuredDimension(widthSize, getLayoutParams().height >= 0 ? getLayoutParams().height : baseSize + getPaddingBottom() + getPaddingTop());
 
     }
@@ -69,10 +69,10 @@ public class WeekView extends ViewGroup {
         int width = getMeasuredWidth();
         int part = width / cnt;
 
-        for(int i = 0; i < cnt; i++) {
+        for (int i = 0; i < cnt; i++) {
 
             View child = getChildAt(i);
-            if(child.getVisibility() == View.GONE) {
+            if (child.getVisibility() == View.GONE) {
                 continue;
             }
 
@@ -80,7 +80,7 @@ public class WeekView extends ViewGroup {
 
             int x = i * part + ((part - childWidth) / 2);
             child.layout(x, 0, x + childWidth, child.getMeasuredHeight());
-            Log.d(TAG, "onLayout ====== " +" x: " +x + " childWidth: " +  childWidth+ " childMeasuredHeight : " + child.getMeasuredHeight());
+            Log.d(TAG, "onLayout ====== " + " x: " + x + " childWidth: " + childWidth + " childMeasuredHeight : " + child.getMeasuredHeight());
         }
 
     }

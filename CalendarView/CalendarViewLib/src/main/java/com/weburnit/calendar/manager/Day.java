@@ -10,7 +10,8 @@ public class Day {
 
     private static final DateTimeFormatter mFormatter = DateTimeFormat.forPattern("d");
 
-    @NonNull private final LocalDate mDate;
+    @NonNull
+    private final LocalDate mDate;
     private boolean mToday;
     private boolean mSelected;
     private boolean mEnabled;

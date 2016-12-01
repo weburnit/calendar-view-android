@@ -11,9 +11,10 @@ import java.lang.annotation.RetentionPolicy;
 
 public abstract class CalendarUnit {
 
-    @IntDef({ TYPE_WEEK, TYPE_MONTH })
+    @IntDef({TYPE_WEEK, TYPE_MONTH})
     @Retention(RetentionPolicy.SOURCE)
-    public @interface CalendarType { }
+    public @interface CalendarType {
+    }
 
     public static final int TYPE_WEEK = 1;
     public static final int TYPE_MONTH = 2;
@@ -65,7 +66,8 @@ public abstract class CalendarUnit {
 
     public abstract boolean prev();
 
-    @CalendarType public abstract int getType();
+    @CalendarType
+    public abstract int getType();
 
     public boolean isIn(@NonNull LocalDate date) {
         return !mFrom.isAfter(date) && !mTo.isBefore(date);

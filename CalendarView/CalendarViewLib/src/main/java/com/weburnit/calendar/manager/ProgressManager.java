@@ -11,7 +11,8 @@ public abstract class ProgressManager {
 
     private static final String TAG = "ProgressManager";
 
-    @NonNull protected ResizableCalendarView mCalendarView;
+    @NonNull
+    protected ResizableCalendarView mCalendarView;
 
     protected RecyclerView mWeeksView;
     protected AbstractViewHolder[] mViews;

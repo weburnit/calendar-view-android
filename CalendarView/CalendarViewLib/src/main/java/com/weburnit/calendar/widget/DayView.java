@@ -3,13 +3,12 @@ package com.weburnit.calendar.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.weburnit.calendar.R;
 
 public class DayView extends LinearLayout {
 
-    private static final int[] STATE_CURRENT = { R.attr.state_current };
+    private static final int[] STATE_CURRENT = {R.attr.state_current};
 
     private boolean mCurrent;
 

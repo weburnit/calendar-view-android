@@ -13,7 +13,8 @@ import java.util.List;
  */
 public class Month extends RangeUnit {
 
-    @NonNull private final List<Week> mWeeks = new ArrayList<>();
+    @NonNull
+    private final List<Week> mWeeks = new ArrayList<>();
     private int mSelectedIndex = -1;
 
     protected Month(@NonNull LocalDate date, @NonNull LocalDate today, @Nullable LocalDate minDate,
@@ -51,7 +52,7 @@ public class Month extends RangeUnit {
     }
 
     @Override
-    public boolean  hasPrev() {
+    public boolean hasPrev() {
 
         LocalDate minDate = getMinDate();
         if (minDate == null) {
@@ -100,7 +101,8 @@ public class Month extends RangeUnit {
 
     }
 
-    @Override public int getType() {
+    @Override
+    public int getType() {
         return TYPE_MONTH;
     }
 

@@ -61,7 +61,7 @@ public abstract class AbstractViewHolder {
     protected abstract void onAnimate(float time);
 
     protected float getRelativeTime(float time) {
-        return  (time - getDelay()) * 1f / getDuration();
+        return (time - getDelay()) * 1f / getDuration();
     }
 
 }

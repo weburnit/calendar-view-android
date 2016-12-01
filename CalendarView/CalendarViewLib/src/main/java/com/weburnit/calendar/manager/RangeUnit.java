@@ -9,11 +9,13 @@ import org.joda.time.LocalDate;
 
 public abstract class RangeUnit extends CalendarUnit {
 
-    @Nullable private LocalDate mMinDate;
-    @Nullable private LocalDate mMaxDate;
+    @Nullable
+    private LocalDate mMinDate;
+    @Nullable
+    private LocalDate mMaxDate;
 
     protected RangeUnit(@NonNull LocalDate from, @NonNull LocalDate to, @NonNull LocalDate today,
-            @Nullable LocalDate minDate, @Nullable LocalDate maxDate) {
+                        @Nullable LocalDate minDate, @Nullable LocalDate maxDate) {
         super(from, to, today);
 
         if (minDate != null && maxDate != null && minDate.isAfter(maxDate)) {
@@ -34,8 +36,6 @@ public abstract class RangeUnit extends CalendarUnit {
     }
 
     /**
-     *
-     *
      * @param firstDayOfMonth First day of current month in range unit
      * @return Week of month of first enabled date, 0 if no dates are enabled.
      */

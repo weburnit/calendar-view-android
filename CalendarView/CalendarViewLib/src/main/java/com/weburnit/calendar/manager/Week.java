@@ -10,7 +10,8 @@ import java.util.List;
 
 public class Week extends RangeUnit {
 
-    @NonNull private final List<Day> mDays = new ArrayList<>(7);
+    @NonNull
+    private final List<Day> mDays = new ArrayList<>(7);
 
     public Week(@NonNull LocalDate date, @NonNull LocalDate today, @Nullable LocalDate minDate,
                 @Nullable LocalDate maxDate) {
@@ -69,7 +70,8 @@ public class Week extends RangeUnit {
         }
     }
 
-    @Override public int getType() {
+    @Override
+    public int getType() {
         return TYPE_WEEK;
     }
 
@@ -111,7 +113,7 @@ public class Week extends RangeUnit {
         mDays.clear();
 
         LocalDate date = getFrom();
-        for(; date.compareTo(getTo()) <= 0; date = date.plusDays(1)) {
+        for (; date.compareTo(getTo()) <= 0; date = date.plusDays(1)) {
             Day day = new Day(date, date.equals(getToday()));
             day.setEnabled(isDayEnabled(date));
             mDays.add(day);

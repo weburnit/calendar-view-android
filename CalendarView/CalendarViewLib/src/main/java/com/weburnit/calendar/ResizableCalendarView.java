@@ -173,6 +173,11 @@ public class ResizableCalendarView extends LinearLayout implements View.OnClickL
             public void onStopped(LocalDate date) {
                 mListener.onDateSelected(date, (CalendarAdapter) calendarTable.getAdapter());
             }
+
+            @Override
+            public void onScroll(LocalDate date) {
+                mListener.onDateScroll(date);
+            }
         });
 
         mHeader = (LinearLayout) findViewById(R.id.header);
@@ -274,6 +279,7 @@ public class ResizableCalendarView extends LinearLayout implements View.OnClickL
 
     public interface OnDateSelect {
         public void onDateSelected(LocalDate date, CalendarAdapter adapter);
+        public void onDateScroll(LocalDate date);
     }
 
 }

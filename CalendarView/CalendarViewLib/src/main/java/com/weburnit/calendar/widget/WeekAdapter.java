@@ -26,10 +26,10 @@ import java.util.List;
 public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.CellHolder> {
 
     private CalendarManager manager;
-    private WeekBar.OnDateSelect mListener;
+    private OnDateSelect mListener;
     private TextView currentWeekDay;
 
-    public WeekAdapter(CalendarManager manager, WeekBar.OnDateSelect mListener) {
+    public WeekAdapter(CalendarManager manager, OnDateSelect mListener) {
         this.manager = manager;
         this.mListener = mListener;
     }
@@ -117,5 +117,9 @@ public class WeekAdapter extends RecyclerView.Adapter<WeekAdapter.CellHolder> {
         public void onClick(View view) {
 
         }
+    }
+
+    public interface OnDateSelect {
+        public void onDateSelected(LocalDate date);
     }
 }

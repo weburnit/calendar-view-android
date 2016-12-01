@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.weburnit.calendar.ResizableCalendarView;
 import com.weburnit.calendar.manager.CalendarManager;
@@ -24,6 +25,8 @@ import com.weburnit.calendar.widget.CalendarAdapter;
 import com.weburnit.calendar.widget.CalendarItem;
 
 import org.joda.time.LocalDate;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mAppBarLayout.setExpanded(true, true);
         mCalendarView = (ResizableCalendarView) findViewById(R.id.calendar_view);
 
+        final TextView header = (TextView) findViewById(R.id.date_picker_text_view);
+
         List<CalendarItem> data = new ArrayList<CalendarItem>();
         data.add(new CalendarItem() {
             @Override
@@ -92,34 +97,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onDateSelected(LocalDate date, CalendarAdapter adapter) {
                 mCalendarView.selectDate(date);
 
-//                adapter.addData(data);
             }
-        });
 
-//        mCalendarView.next();
-
-
-        final ImageView arrow = (ImageView) findViewById(R.id.date_picker_arrow);
-
-        RelativeLayout datePickerButton = (RelativeLayout) findViewById(R.id.date_picker_button);
-
-        datePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                if (isExpanded) {
-                    ViewCompat.animate(arrow).rotation(0).start();
-                    isExpanded = false;
-                } else {
-                    ViewCompat.animate(arrow).rotation(180).start();
-                    isExpanded = true;
-                }
+            public void onDateScroll(LocalDate date) {
+                Log.d("ON SCROLLING DATE ", date.toString());
+                DateTimeFormatter formatter = DateTimeFormat.forPattern("MMMM - yyyy");
+                header.setText(date.toString(formatter));
             }
         });
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview_main);
         CalendarManager manager = new CalendarManager(LocalDate.now(), 2);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mCalendarView.init(manager, mRecyclerView);
-//        mRecyclerView.setAdapter(new ClassAdapter());
     }
 
     @Override

@@ -122,7 +122,7 @@ public class WeekBar extends RecyclerView {
         this.manager = manager;
         this.setIndicator(indicatorInterface);
 
-        WeekAdapter adapter = new WeekAdapter(manager, new OnDateSelect() {
+        WeekAdapter adapter = new WeekAdapter(manager, new WeekAdapter.OnDateSelect() {
             @Override
             public void onDateSelected(LocalDate date) {
                 int intervaleDay = Days.daysBetween(manager.getMinDate(), date).getDays();
@@ -155,10 +155,8 @@ public class WeekBar extends RecyclerView {
 
     public interface WeekBarListener {
         public void onStopped(LocalDate date);
-    }
 
-    public interface OnDateSelect {
-        public void onDateSelected(LocalDate date);
+        public void onScroll(LocalDate date);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -171,5 +169,6 @@ public class WeekBar extends RecyclerView {
         int dayIndex = hideItems + indicatorInterface.getCurrentPosition();
         DayView dayView = this.linkedListDayView.get(dayIndex);
         ((WeekAdapter) this.getAdapter()).setCurrentDayView(dayView);
+        this.listener.onScroll(manager.getMinDate().plusDays(dayIndex));
     }
 }

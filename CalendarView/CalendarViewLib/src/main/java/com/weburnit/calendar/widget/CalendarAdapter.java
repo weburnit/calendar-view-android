@@ -49,60 +49,6 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
 
     public CalendarAdapter() {
         this.data = new ArrayList<>();
-        List<CalendarItem> data = new ArrayList<CalendarItem>();
-        data.add(new CalendarItem() {
-            @Override
-            public String getPrice() {
-                return "$16";
-            }
-
-            @Override
-            public String getInformation() {
-                return "Something";
-            }
-
-            @Override
-            public String getSubject() {
-                return "My subject";
-            }
-
-            @Override
-            public String getPhoto() {
-                return "https://d13yacurqjgara.cloudfront.net/users/62525/screenshots/2457251/fitness_calendar.png";
-            }
-
-            @Override
-            public String getName() {
-                return "Paul Item";
-            }
-        });
-        data.add(new CalendarItem() {
-            @Override
-            public String getPrice() {
-                return "$14";
-            }
-
-            @Override
-            public String getInformation() {
-                return "Something";
-            }
-
-            @Override
-            public String getSubject() {
-                return "My subject";
-            }
-
-            @Override
-            public String getPhoto() {
-                return "http://img.f9.giaitri.vnecdn.net/2016/11/30/Nicole-Kidman-11-4340-1480475726.jpg";
-            }
-
-            @Override
-            public String getName() {
-                return "Paul Item";
-            }
-        });
-        this.data = data;
     }
 
     @Override

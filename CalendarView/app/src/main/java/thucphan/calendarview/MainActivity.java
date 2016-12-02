@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        setTitle("Section 1");
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -64,34 +61,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         final TextView header = (TextView) findViewById(R.id.date_picker_text_view);
 
-        List<CalendarItem> data = new ArrayList<CalendarItem>();
-        data.add(new CalendarItem() {
-            @Override
-            public String getPrice() {
-                return "12$";
-            }
-
-            @Override
-            public String getInformation() {
-                return "Something";
-            }
-
-            @Override
-            public String getSubject() {
-                return "My subject";
-            }
-
-            @Override
-            public String getPhoto() {
-                return "https://d13yacurqjgara.cloudfront.net/users/62525/screenshots/2457251/fitness_calendar.png";
-            }
-
-            @Override
-            public String getName() {
-                return "Paul Item";
-            }
-        });
-
         mCalendarView.setListener(new ResizableCalendarView.OnDateSelect() {
             @Override
             public void onDateSelected(LocalDate date, CalendarAdapter adapter) {
@@ -101,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onDateScroll(LocalDate date) {
-                Log.d("ON SCROLLING DATE ", date.toString());
                 DateTimeFormatter formatter = DateTimeFormat.forPattern("MMMM - yyyy");
                 header.setText(date.toString(formatter));
             }

@@ -13,6 +13,9 @@
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay"
         app:expanded="false"
+        android:contentInsetLeft="0dp"
+        android:contentInsetStart="0dp"
+        app:contentInsetStart="0dp"
         app:layout_behavior="thucphan.calendarview.ScrollingCalendarBehavior">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -24,7 +27,10 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:background="@drawable/bg_calendar"
-            app:statusBarScrim="?attr/colorPrimaryDark">
+            app:statusBarScrim="?attr/colorPrimaryDark"
+            android:contentInsetLeft="0dp"
+            android:contentInsetStart="0dp"
+            app:contentInsetStart="0dp">
 
             <LinearLayout
                 android:id="@+id/compactcalendar_view_container"
@@ -37,7 +43,10 @@
                 <com.weburnit.calendar.ResizableCalendarView
                     android:id="@+id/calendar_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerInside"
+                    android:layout_gravity="center"
+                    />
             </LinearLayout>
 
             <android.support.v7.widget.Toolbar

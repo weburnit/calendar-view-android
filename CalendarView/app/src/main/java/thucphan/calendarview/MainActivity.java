@@ -36,9 +36,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ResizableCalendarView mCalendarView;
     private RecyclerView mRecyclerView;
 
-
-    private boolean isExpanded = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
